@@ -1,0 +1,29 @@
+
+```{r}
+olympics <- read.csv("./olympics.csv", header=T)
+
+
+
+totalathletes = olympics$Male.count + olympics$Female.count
+totalmedals = olympics$Gold.medals + olympics$Silver.medals + olympics$Bronze.medals
+olympics <- cbind(olympics, totalathletes, totalmedals)
+
+percapita <- olympics$X2011.GDP / olympics$X2010.population
+olympics <- cbind(olympics, percapita)
+plot(olympics[,5:12])
+cor(olympics[,3:11])
+
+cor(olympics[,c(3,4,10,11)])
+
+plot(olympics$totalmedals ~ olympics$totalathletes)
+plot(olympics$totalathletes ~ olympics$X2010.population)
+plot(olympics$totalathletes ~ olympics$X2011.GDP)
+plot(olympics$totalmedals ~ olympics$X2011.GDP)
+plot(olympics$totalmedals ~ olympics$X2010.population)
+plot(olympics$totalmedals ~ olympics$percapita, ylab="total medals", xlab="per capita GDP")
+
+
+trimmed <- olympics[olympics$X2011.GDP < 5.0e+12,]
+plot(trimmed$totalmedals ~ trimmed$X2011.GDP)
+summary(olympics$X2011.GDP)
+```

@@ -1,0 +1,21 @@
+
+```{r}
+data <- read.table('./maple.txt', header=T)
+
+model1 <- lm(LeafIndex ~ Latitude, data=data)
+summary(model1)  # .45369
+
+model2 <- lm(LeafIndex ~ JulyTemp, data=data)
+summary(model2) # -.33318
+
+
+model3 <- lm(LeafIndex ~ Latitude + JulyTemp, data=data)
+summary(model3) # (.31393 / -.13524)
+
+# (.45369 - .31393) / .45369 [30%]
+# (-.33318 - (-.13524)) / -.33318 [60%]
+
+cor(data$Latitude, data$JulyTemp)
+
+# very strong negative correlation (-.8) between latitude and july temperature
+```

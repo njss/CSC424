@@ -1,0 +1,16 @@
+```{r}
+data <- read.table('./chicinsur.txt', header=T)
+
+# (b)
+cor(data)
+
+# (c)
+model <- lm(newpol ~ pctmin + fires + thefts + pctold + income, data=data)
+summary(model)
+
+model2 <- lm(newpol ~ pctmin + fires  + pctold + income, data=data)
+summary(model2)
+
+plot(fitted(model), residuals(model), xlab="Predicted", ylab="Residuals")
+
+```
