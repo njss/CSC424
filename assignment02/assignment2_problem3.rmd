@@ -1,0 +1,30 @@
+## Assignment 2 / Problem 3
+### Summary
+* Principal Component Analysis
+* 20 points
+
+### Dataset
+The data given in the file ‘problem3.txt’ is the percentage employed in different industries in Europe countries during 1979. Techniques such as Principal Component Analysis (PCA) can be used to examine which countries have similar employment patterns.
+
+There are 26 countries in the file and 10 variables as follows:
+
+* **Country**: Name of country 
+* **Agr**: Percentage employed in agriculture 
+* **Min**: Percentage employed in mining 
+* **Man**: Percentage employed in manufacturing 
+* **PS**: Percentage employed in power supply industries 
+* **Con**: Percentage employed in construction 
+* **SI**: Percentage employed in service industries 
+* **Fin**: Percentage employed in finance 
+* **SPS**: Percentage employed in social and personal services 
+* **TC**: Percentage employed in transport and communications. 
+
+Perform a principal component analysis using the covariance matrix:
+
+1. How many principal components are required to explain 90% of the total variation for this data? 
+1. For the number of components in part a, give the formula for each component and a brief interpretation. 
+1. What countries have the highest and lowest values for each principal component (only include the number of components specified in part a). For each of those countries, give the principal component scores (again only for the number of components specified in part a).
+1. Include and interpret the scatter plot of the data using the first two principal components. 
+
+```{r}
+```

@@ -1,0 +1,127 @@
+## Assignment 2 / Problem #1
+### Summary
+* Regression analysis
+* 20 points
+
+### Housing dataset
+contains housing values in the suburbs of Boston. 
+The detailed explanation concerning the input and output variables can be fetched from the UCI machine learning repository http://archive.ics.uci.edu/ml/datasets/Housing:
+
+1. CRIM: per capita crime rate by town 
+2. ZN: proportion of residential land zoned for lots over 25,000 sq.ft. 
+3. INDUS: proportion of non-retail business acres per town 
+4. CHAS: Charles River dummy variable (= 1 if tract bounds river; 0 otherwise) 
+5. NOX: nitric oxides concentration (parts per 10 million) 
+6. RM: average number of rooms per dwelling 
+7. AGE: proportion of owner-occupied units built prior to 1940 
+8. DIS: weighted distances to five Boston employment centres 
+9. RAD: index of accessibility to radial highways 
+10. TAX: full-value property-tax rate per $10,000 
+11. PTRATIO: pupil-teacher ratio by town 
+12. B: 1000(Bk - 0.63)^2 where Bk is the proportion of blacks by town 
+13. LSTAT: % lower status of the population 
+14. MEDV: Median value of owner-occupied homes in $1000's (output variable)
+
+### (A)
+Fit a linear regression model and report goodness of fit, the utility of the model, the estimated coefficients, their standard errors, and statistical significance. Use the default method for running regression analysis in SPSS and interpret your results.
+```{r}
+housing <- read.table('./housing.data')
+names(housing) <- c('CRIM', 'ZN', 'INDUS', 'CHAS', 'NOX', 'RM', 'AGE', 'DIS', 'RAD', 'TAX', 'PTRATIO', 'B', 'LSTAT', 'MEDV')
+summary(housing)
+model <- lm(MEDV ~ CRIM + ZN + INDUS + CHAS + NOX + RM + AGE + DIS + RAD + TAX + PTRATIO + B + LSTAT, data=housing)
+summary(model)
+```
+
+#### Results
+* **Goodness of fit**: 
+  * R-squared: 0.7406
+  * Adj R-squared: 0.7338
+* **Utility of model**:
+  * F-Statistic: 108.1 on 13 and 492 DF, p-value: < 2.2e-16
+* **Estimated coefficients**:
+  * (Intercept)
+		* 3.646e+01
+		* 5.103e+00 (std err)
+		* 3.28e-12 (signif)
+	* CRIM
+	    * -1.080e-01
+		* 3.286e-02 (std err)
+		* 0.001087 (signif)
+	* ZN
+	    * 4.642e-02
+		* 1.373e-02 (std err)
+		* 0.000778 (signif)
+	* INDUS
+	    * 2.056e-02
+		* 6.150e-02 (std err)
+		* 0.738288 (signif)
+	* CHAS
+	    * 2.687e+00
+		* 8.616e-01 (std err)
+		* 0.001925 (signif)
+	* NOX
+	    * -1.777e+01
+		* 3.820e+00 (std err)
+		* 4.25e-06 (signif)
+	* RM
+	    * 3.810e+00
+		* 4.179e-01 (std err)
+		* < 2e-16 (signif)
+	* AGE
+	    * 6.922e-04
+		* 1.321e-02 (std err)
+		* 0.958229 (signif)
+	* DIS
+	    * -1.476e+00
+		* 1.995e-01 (std err)
+		* 6.01e-13 (signif)
+	* RAD
+	    * 3.060e-01
+		* 6.635e-02 (std err)
+		* 5.07e-06 (signif)
+	* TAX
+	    * -1.233e-02
+		* 3.760e-03 (std err)
+		* 0.001112 (signif)
+	* PTRATIO
+	    * -9.527e-01
+		* 1.308e-01 (std err)
+		* 1.31e-12 (signif)
+	* B
+	    * 9.312e-03
+		* 2.686e-03 (std err)
+		* 0.000573 (signif)
+	* LSTAT
+	    * -5.248e-01
+		* 5.072e-02 (std err)
+		* < 2e-16 (signif)
+* **Evaluation**:
+  * Good fit and model utility.  Model is able to explain ~ 73% of the variation in the dependent variable.
+  * Large number of highly significant coefficients.
+  * Next steps would likely be:
+    * remove 'AGE' (very low significance) and re-run
+    * assuming 'INDUS' signif remains low following this adjustment, remove it as well, and re-run
+
+
+### (B)
+Perform a feature selection on this data by using the forward selection method of the regression analysis. Analyze the output in terms of the order in which the variables are included in the regression model.
+
+
+```{r}
+base <- lm(MEDV ~ RM, data=housing)
+step(base, scope=list(upper=model, lower=~1), direction="forward", trace=TRUE)
+```
+
+#### Order of variable addition (forward stepwise selection)
+
+1. RM
+1. LSTAT
+1. PTRATIO
+1. DIS
+1. NOX
+1. CHAS
+1. B
+1. ZN
+1. CRIM
+1. RAD
+1. TAX

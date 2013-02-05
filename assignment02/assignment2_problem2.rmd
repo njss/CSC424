@@ -1,0 +1,36 @@
+## Assignment 2 / Problem #2
+### Summary
+* Canonical Correlation Analysis
+* 20 points
+
+### Dataset
+Water, soil, and mosquito fish samples were collected at n = 165 sites/stations in the marshes of southern Florida. The following water variables were measured: 
+
+* **MEHGSWB**:  Methyl Mercury in surface water, ng/L 
+* **TURB**:  in situ surface water turbidity
+* **DOCSWD**:	Dissolved Organic Carbon in surface water, mg/L
+* **SRPRSWFB**:	Soluble Reactive Phosphorus in surface water,mg/L or ug/L 
+* **THGFSFC**:	Total Mercury in mosquitofish (Gambusia affinis), average of 7 individuals, ug/kg
+
+In addition, the following soil variables were measured: 
+
+* **THGSDFC**:	Total Mercury in soil, ng/g 
+* **TCSDFB**:	Total Carbon in soil, % 
+* **TPRSDFB**:	Total Phosphorus in soil, ug/g
+
+Perform a canonical correlation analysis, describing the relationships between the soil and water variables using the data  found in data\_marsh\_cleaned\_homework#2 
+
+1. Answer the following questions regarding the canonical correlations. 
+  1. Test the null hypothesis that the canonical correlations are all equal to zero. Give your test statistic, d.f., and p-value. 
+  1. Test the null hypothesis that the second and third canonical correlations equal zero. Give your test statistic, d.f., and p-value. 
+  1. Test the null hypothesis that the third canonical correlation equals zero. Give your test statistic, d.f., and p-value. 
+  1. Present the three canonical correlations, together with their standard errors. (Report the standard errors only if you are using SAS; SPSS will not output the standard errors)
+  1. What can you conclude from the above analyses? 
+2. Answer the following questions regarding the canonical variates. 
+  1. Give the formulae for the significant canonical variates for the soil and water variables. 
+  1. Give the correlations between the significant canonical variates for soils and the soil variables, and the correlations between the significant canonical variates for water and the water variables. 
+  1. What can you conclude from the above analyses? 
+
+
+```{r}
+```
