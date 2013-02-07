@@ -104,18 +104,21 @@ summary(model)
 
 
 ### (B)
-Perform a feature selection on this data by using the forward selection method of the regression analysis. Analyze the output in terms of the order in which the variables are included in the regression model.
+
+Perform a feature selection on this data by using the forward selection method of the regression
+analysis. Analyze the output in terms of the order in which the variables are included in the
+regression model.
 
 
 ```{r}
-base <- lm(MEDV ~ RM, data=housing)
+base <- lm(MEDV ~ LSTAT, data=housing)
 step(base, scope=list(upper=model, lower=~1), direction="forward", trace=TRUE)
 ```
 
 #### Order of variable addition (forward stepwise selection)
 
-1. RM
 1. LSTAT
+1. RM
 1. PTRATIO
 1. DIS
 1. NOX
