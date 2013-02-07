@@ -33,4 +33,6 @@ Perform a canonical correlation analysis, describing the relationships between t
 
 
 ```{r}
+marsh <- read.csv('./data_marsh_cleaned_homework#2.csv', header=T)
+
 ```
